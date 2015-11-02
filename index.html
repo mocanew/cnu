@@ -98,6 +98,18 @@ $data = $send -> fetchAll(PDO::FETCH_ASSOC);
 print_r($data); // afișare
 ?></code></pre>
                         </div>
+                        <h3 class="sub-title text-center">Modificarea datelor dintr-o tabelă</h3>
+                        <div class="code-block">
+                            <pre><code class="php">&lt;?php
+$nume = "'Tușa Geta"; 
+$numeNou = 'Vasile';
+$cnp = '1970512392469';
+
+$sql = "UPDATE catalog SET nume=? WHERE $nume=? AND $cnp=?";
+$send = $conn -> prepare($sql);
+$send -> execute(array($numeNou, $nume, $cnp)) or die("A apărut o eroare la modificarea datelor");
+?></code></pre>
+                        </div>
                         <h3 class="sub-title text-center">Ștergerea datelor dintr-o tabelă</h3>
                         <div class="code-block">
                             <pre><code class="php">&lt;?php
