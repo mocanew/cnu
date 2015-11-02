@@ -1,0 +1,11 @@
+{
+  "name": "Cnu2015",
+  "version": "0.1.0",
+  "devDependencies": {},
+  "dependencies": {
+    "grunt": "^0.4.5",
+    "grunt-autoprefixer": "^3.0.3",
+    "grunt-contrib-sass": "^0.9.2",
+    "grunt-contrib-watch": "^0.6.1"
+  }
+}
