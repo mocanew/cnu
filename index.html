@@ -14,7 +14,7 @@
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 
         <link rel="stylesheet" href="css/styles.css">
-        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/styles/darkula.min.css">
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/styles/tomorrow-night.min.css">
     </head> 
 
     <body data-spy="scroll">
@@ -58,20 +58,59 @@ else{
                     </div>
 
                     <div class="block">
-                        <h3 class="sub-title text-center">Database connection</h3>
+                        <h3 class="sub-title text-center">Conexiune la baza de date</h3>
                         <hr>
                         <div class="code-block">
                             <pre><code class="php">&lt;?php
 $servername = "localhost";
 $username = "username";
 $password = "password";
+$db = "databaseName";
 
-$conn = new PDO("mysql:host=$servername;dbname=myDB", $username, $password) or die('Nu am putut realiza conexiunea la baza de date!');
+$conn = new PDO("mysql:host=$servername;dbname=$db", $username, $password) or die('Nu am putut realiza conexiunea la baza de date!');
 
 echo "Conexiune realizată cu succes!";
 ?></code></pre>
                         </div>
-                    </div> 
+                        <h3 class="sub-title text-center">Introducere de date într-o tabelă</h3>
+                        <div class="code-block">
+                            <pre><code class="php">&lt;?php
+$nume = "Anișoara";
+$cnp = "1970112392469";
+$email = "anisoara@gmail.com";
+
+
+$sql = "INSERT INTO catalog (nume, cnp, email) VALUES (?, ?, ?)"; // `catalog` este numele tabelei
+$send = $conn -> prepare($sql);
+$send -> execute(array($nume, $cnp, $email)) or die("A apărut o eroare la introducerea datelor");
+?></code></pre>
+                        </div>
+                        <h3 class="sub-title text-center">Extragerea datelor dintr-o tabelă</h3>
+                        <div class="code-block">
+                            <pre><code class="php">&lt;?php
+$nume = 'Măriuca';
+
+$sql = "SELECT * FROM catalog WHERE nume = ?";
+$send = $conn -> prepare($sql);
+$send -> execute(array($nume));
+$data = $send -> fetchAll(PDO::FETCH_ASSOC);
+
+print_r($data); // afișare
+?></code></pre>
+                        </div>
+                        <h3 class="sub-title text-center">Ștergerea datelor dintr-o tabelă</h3>
+                        <div class="code-block">
+                            <pre><code class="php">&lt;?php
+$email = 'țața_dolores@yahoo.com';
+
+$sql = "DELETE FROM catalog WHERE email = ?";
+$send = $conn -> prepare($sql);
+$count = $send -> execute(array($email));
+
+echo "Am șters ". $count ." intrări din tabelă";
+?></code></pre>
+                        </div>
+                    </div>
                 </div>         
             </div>
         </section>
