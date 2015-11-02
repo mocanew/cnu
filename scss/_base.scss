@@ -10,6 +10,10 @@ body {
     font-size: 16px;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    -webkit-user-select: none;
+    -moz-user-select: -moz-none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 h1, h2, h3, h4, h5, h6  {
@@ -84,7 +88,7 @@ pre code {
     background: url(../images/bg.jpg);
     background-size: cover;
     background-position: center center;
-    
+
     .title,
     .intro,
     .meta{
@@ -120,7 +124,7 @@ pre code {
         bottom: 30px;
         left: 50%;
         transform: translate(-50%, 0);
-        
+
         li {
             margin-right: 15px;
         }
